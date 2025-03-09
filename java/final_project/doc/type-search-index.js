@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"<Unnamed>","l":"Converter"},{"p":"<Unnamed>","l":"FakeApplet"},{"p":"<Unnamed>","l":"Main"},{"p":"<Unnamed>","l":"MyApplet"},{"p":"<Unnamed>","l":"Converter.NumToRoman"},{"p":"<Unnamed>","l":"Converter.RomanToNum"}]
