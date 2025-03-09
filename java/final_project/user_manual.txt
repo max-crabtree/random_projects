@@ -1,0 +1,59 @@
+User Manual
+
+This program accepts number input up to and including 3999999999.
+Once you type in a number, the roman numeral equivalent will be outputted.
+
+This program also works the other way; you can input a roman numeral and the
+number equivalent will be shown.
+There are a few things to be known about how to format the numbers:
+
+The basic roman numerals are:
+    I --> 1
+    V --> 5 (subtractive)
+    X --> 10
+    L --> 50 (subtractive)
+    C --> 100
+    D --> 500 (subtractive)
+    M --> 1000
+
+Roman numerals work in two ways; additive and subtractive:
+
+Numerals are added if it follows the structure of: 
+[LARGER][SMALLER]
+Example: VI ->        5 + 1      -> 7
+         XIII -> 10 + 1 + 1 + 1  -> 11
+
+Numerals are subtracted if it follows the structure of: 
+[SMALLER (cannot be a subtractive numeral)][LARGER (must be a subtractive numeral)]
+Example: IV ->      5 - 1 OR -1 + 5      -> 4
+         CM -> 1000 - 100 OR -100 + 1000 -> 900
+
+***
+Notice the pattern in the subtractive numbers? A good tip is to think of
+'pivoting' around each different character that is found.
+Example: I, II, III, IV, V, VI, VII, VIII, IX, X
+
+Rules that apply to them are:
+    - Must contain a valid roman numeral
+    - No more than 3 of the same numeral can appear in succession
+        - Note that only 1 respective subtractive numeral can appear in a row
+    - A numeral must be followed by a numeral of same amount or less
+
+When following these rules, the basic numerals can only get you so far
+(maximum number is 3999). This converter has implemented the vinculum and box
+systems to reach higher numbers.
+
+vinculum --> [NUMERAL] * 1000
+box      --> [NUMERAL] * 100000
+
+To implement a vinculum number, type the numeral followed by ^.
+Example: V^ -> 5 * 1000 -> 5000 OR X^V^ -> 15 * 1000 -> 15000
+
+To implement a box number, type the numeral enclosed by ||.
+Example: |V| -> 5 * 100000 -> 500000 OR |X||V| -> 15 * 100000 -> 1500000
+
+If you would like to view the diagnostics to understand what the program is
+doing, run it in test mode.
+
+[normal mode] --> :make run
+[test mode]   --> :make test

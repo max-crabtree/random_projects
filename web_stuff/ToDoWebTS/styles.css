@@ -1,0 +1,19 @@
+body {
+    font-family:monospace;
+}
+
+#search-bar {
+    border-radius: 5px;
+}
+
+#note-title-popup {
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px gray;
+    display: none;
+    padding: 10px;
+    text-align: center;
+    width: fit-content;
+    z-index: 100;
+    /* height: fit-content; */
+}

@@ -1,0 +1,38 @@
+html {
+    background-color: rgb(255, 128, 0);
+}
+
+body {
+    font-family: "Roboto Flex", sans-serif;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: 0px 4px 12px black;
+    background-color: rgb(255, 170, 95);
+    height: 3000px;
+}
+
+h1 {
+    color: rgb(255, 80, 0);
+}
+
+header {
+    font-size: 30px;
+    color: red;
+}
+
+header:hover {
+
+}
+
+.blurb {
+    
+}
+
+.blurb:hover {
+    filter: brightness(50%);
+}
+
+.icons {
+    width: 25px;
+}

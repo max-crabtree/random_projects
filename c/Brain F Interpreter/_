@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Pointer {
+	struct Cell *current;
+	struct Cell *next;
+};
+
+struct Cell {
+	int number;
+	int value;
+};
+
+struct Pointer* makeNewCell(struct Pointer* currentCell) {
+	printf("Making new cell...\n");
+	//segmentation fault??
+	//struct Pointer* newCell = (struct Pointer*)malloc(sizeof(struct Pointer));
+	struct Cell* newCell = (struct Cell*)malloc(sizeof(struct Cell));
+	if (newCell != NULL) {
+		newCell->number = currentCell->current->number + 1;
+		newCell->value = 0;
+		if (currentCell->next == NULL) {
+			currentCell->next == newCell;
+		}
+		else {
+			while (currentCell->next != NULL) {
+				currentCell->next = currentCell;
+			}
+			currentCell->next = newCell;
+		}
+	}
+	return newCell;
+}
+
+void increment(struct Pointer* currentCell) {
+	currentCell->current->value = currentCell->current->value + 1;
+	printf("Cell %d's value is: %d\n", currentCell->current->number, currentCell->current->value);
+}
+
+void decrement(struct Pointer* currentCell) {
+	currentCell->current->value = currentCell->current->value - 1;
+	printf("Cell %d's value is: %d\n", currentCell->current->number, currentCell->current->value);
+}
+
+void shiftUp(struct Pointer* currentCell) {
+	printf("Shifting up...\n");
+	printf("Current cell was %d\n", currentCell->current->number);
+	currentCell = makeNewCell(currentCell);
+	printf("It is now: %d\n", currentCell->current->number);
+}
+
+void shiftDown(struct Pointer* currentCell) {
+	printf("Shifting down...\n");
+	currentCell->current = currentCell->current
+
+int main() {
+	struct Cell currentCell = {0, 0};
+	struct Pointer pointer = {&currentCell, NULL};
+	char command;
+	_Bool isWriting = 1;
+	printf("Brain Fudge Interpreter\n");
+	while (isWriting == 1) {
+		printf("%d:", pointer.current->number);
+		scanf(" %c", &command);
+		switch (command) {
+			case '+':
+				increment(&pointer);
+				break;
+			case '-':
+				decrement(&pointer);
+				break;
+			case '>':
+				shiftUp(&pointer);
+				break;
+			//more commands
+			case 'r':
+				isWriting = 0;
+				break;
+		}
+	}
+	printf("Writing stopped!\n");
+	//run the interpreter
+}

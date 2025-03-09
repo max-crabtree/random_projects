@@ -1,0 +1,22 @@
+++GENERAL INTERACTION COMMANDS++
+
+move/mv [direction]: moves the player in [direction]
+         direction: north OR south OR east OR west
+
+look/lk: look around yourself
+
+inventory/inv: check your inventory
+
+stats/s: view player statistics
+
+---------------------------------------------------------------
+
+**BATTLE COMMANDS**
+
+attack/a: attack the monster currently being fought
+
+consume/c: consume an item from inventory
+
+defend/d: defend against the enemy
+
+run/r: attempt to run from the enemy

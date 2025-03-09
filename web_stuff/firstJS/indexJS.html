@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+   <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+   </head>
+  <body>
+
+   <h1>JAVASCRIPT</h1>
+
+   <br>
+
+   <h2>JavaScript Time</h2>
+
+   <button type="button"
+    onclick="document.getElementById('date').innerHTML =Date()">
+    Date and Time</button>
+
+   <p id="date"></p>
+
+   <br>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>JavaScript Basic Button</h2>
+
+   <p id="basic">Click the Button! Magical things will happen!</p>
+
+   <button type="button"
+    onclick='document.getElementById("basic").innerHTML = "Boom!"'>Click This</button>
+
+   <p>Very basic, but essential</p>
+
+   <br>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>JavaScript Changing Images</h2>
+
+   <button
+    onclick="document.getElementById('Images').src='Images/Red.jpg'">Red</button>
+
+   <img id="Images" src="Images/Blue.jpg" style="width: 100px">
+
+   <button
+    onclick="document.getElementById('Images').src='Images/Blue.jpg'">Blue</button>
+    
+   <p>That's Cool!</p>
+
+   <br>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>JavaScript Changing Styles</h2>
+
+   <p id="stylechange">This is gonna change if you click the button</p>
+
+   <button type="button"
+    onclick="document.getElementById('stylechange').style.fontSize='30px'">Click This</button>
+
+   <p>This is handy</p>
+
+   <br>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>JavaScript Hiding Stuff</h2>
+
+   <p id="hidden">If you click the button this will disappear</p>
+
+   <button type="button"
+    onclick="document.getElementById('hidden').style.display='none'">Click This</button>
+
+   <p>Cool</p>
+
+   <br>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>JavaScript Showing Stuff</h2>
+
+   <p>Click the button and something will appear</p>
+
+   <p id="showing" style="display:none">Magic!</p>
+
+   <button type="button"
+    onclick="document.getElementById('showing').style.display='block'">Click This</button>
+
+   <p>Pretty cool</p>
+
+   <br>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>JavaScript in Script</h2>
+
+   <p id="scripting"></p>
+
+   <script>
+    document.getElementById('scripting').innerHTML = 
+    "Scripting in JavaScript is for writing functions and code that only JavaScript knows. It can be used for paragraphs etc. ; but I'll just stick with HTML for that.";
+   </script>
+
+   <br>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>JavaScript in Many Places</h2>
+
+   <p>JavaScript can be used in many places other than the body tag. It can be used in the head tag and also from other external files. I will only be using it in the body but there are many ways to go about doing it.</p>
+   <br>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>JavaScript Functions</h2>
+
+   <p>With functions in JavaScript, many things can happen. For this we will be doing a calculation.</p>
+
+   <button type="button"
+    onclick="document.getElementById('calculation').style.display='block'">Click to Solve</button>
+
+   <p>1468 x 8649 = <p id="calculation" style="display:none"></p></p>
+
+   <script>
+    function myFunction(a, b) 
+    {
+    return a * b;
+    }
+    document.getElementById('calculation').innerHTML = myFunction(1486, 8649)
+   </script>
+
+   <br>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>JavaScript Functions #2</h2>
+
+   <p>Another calculation; a little more advanced (I guess).</p>
+
+   <button type="button"
+    onclick="document.getElementById('advcalc').style.display='block'">Click to Solve</button>
+
+   <p>0.9896 / 145.7859 x 167.945 + 235 = <p id="advcalc" style="display:none"></p></p>
+
+   <script>
+    function advanced(a, b, c, d) 
+    {
+    return (a / b * c + d);
+    }
+    document.getElementById('advcalc').innerHTML = advanced(0.9896, 145.7859, 167.945, 235);
+   </script>
+
+   <br>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>JavaScript Return Function</h2>
+
+   <p>The return function is used in doing calculations because it returns value from a function.</p>
+
+   <p id="returnfunction"></p>
+
+   <script>
+    function returnfunc(number, name)
+    {
+      return name + " has " + number + " apples. If he gets 20 more, how many will he have?";
+    }
+    document.getElementById('returnfunction').innerHTML = returnfunc("15" , "Jimmy");
+   </script>
+
+   <p>This may look very basic, but 'Jimmy' and '15' were made from the return function.</p>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>JavaScript Functions into Paragraphs</h2>
+
+   <p>Function results can be directly implemented into a paragraph.</p>
+
+   <p id="functiontoparagraph"></p>
+
+   <script>
+    document.getElementById("functiontoparagraph").innerHTML = "10 + 10 is -->" + simpleequation(10, 10) + "<-- This 20 here is the function";
+    function simpleequation(a, b) 
+    {
+    return (a + b);
+    }
+   </script>
+
+   <br>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>JavaScript Random</h2>
+
+   <p>JavaScript can be used to randomise things. This is randomised numbers between 0 and 100 (no decimals).</p>
+
+   <button type="button"
+    onclick="document.getElementById('randomiser').innerHTML = Math.floor(Math.random() * 101)">Randomiser!</button>
+
+   <p id="randomiser"></p>
+
+   <br>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>JavaScript Even More Random</h2>
+
+   <p>Apparently this is even more random (or proper) than the one before. This time it's between 0 and 1000 (no decimals).</p>
+
+   <button type="button"
+    onclick="document.getElementById('randomiserbetter').innerHTML = getRndInteger(0, 1000)">Randomiser!</button>
+
+   <script>
+    function getRndInteger(min, max) 
+    {
+    return Math.floor(Math.random() * (max - min)) + min;
+    }
+   </script>
+     
+   <p id="randomiserbetter"></p>
+
+   <br>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>JavaScript The Boolean Function</h2>
+
+   <p>The Boolean Function can be used to find out if something is true or false.</p>
+
+   <button type="button"
+    onclick="booleantorf()">Let's See</button>
+
+   <p>Is 100 < 100.01?</p>
+
+   <p id="trueorfalse"></p>
+
+   <script>
+    function booleantorf()
+    {
+    document.getElementById('trueorfalse').innerHTML = Boolean(100 < 100.01);
+    }
+   </script>
+
+   <br>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+     
+   <br>
+
+   <h2>JavaScript Statements</h2>
+
+   <p>JavaScript Statements are a list of statements to be executed by a computer</p>
+
+   <p>Z = X * Y
+
+   <p>If X=36.0987 and Y=23.96754 what does Z equal? 
+
+   <br>
+
+   <br>
+
+   <button type="button"
+    onclick="document.getElementById('statements').style.display='block'">Click Here to See Answer!</button>
+
+   <p id="statements" style="display:none"></p>
+       
+   <script>
+    var X, Y, Z;
+    X = 36.0987;
+    Y = 23.96754;
+    Z = X * Y;
+    document.getElementById('statements').innerHTML = "Z= " + Z + ".";
+   </script>
+
+   <br>
+      
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>JavaScript Variables</h2>
+
+   <p>JavaScript variables 'contain' data. For example, the variable x could carry a whole sentence in its one letter.</p>
+
+   <p id="variablenumber"></p>
+   <p id="variableword"></p>
+
+   <script>
+    var number= "35";
+    var word= "Yo";
+    document.getElementById('variablenumber').innerHTML = number;
+    document.getElementById('variableword').innerHTML = word;
+   </script>
+
+   <p>Both 35 and Yo are variables. They have each come from the variables <i>number</i> and <i>word</i>.</p>
+
+   <br>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+   <br>
+
+   <h2>Finished</h2>
+
+   <p>I don't really know what else to add</p>
+
+   <br>
+
+   <br>
+
+   <h1>DONE</h1>
+
+   <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+  </body>
+  
+</html>   
