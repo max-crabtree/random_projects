@@ -50,7 +50,16 @@ public class GameManager {
                 }
             }
 
-            new Game(player, bettingAmount);
+            Dealer dealer = new Dealer();
+            IOHandler io = new IOHandler();
+            GameState state = new GameState(player, dealer);
+            PayoutHandler payout = new PayoutHandler(player, bettingAmount);
+            CardManager cards = new CardManager();
+            PlayerActionHandler playerAction = new PlayerActionHandler(player, io, state, cards, bettingAmount, payout);
+
+            Game game = new Game(player, bettingAmount, dealer, io, state, payout, cards, playerAction);
+            game.start();
+            
             canWithdraw = false;
             player.setTotalSplits(0);
         }

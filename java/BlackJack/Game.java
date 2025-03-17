@@ -12,19 +12,22 @@ public class Game {
     //private int numberOfSplits; // work on this
     private boolean isSplit;
 
-    public Game(Player player, int bet) {
+    public Game(Player player, int bet, Dealer dealer, IOHandler io, GameState state, PayoutHandler payout, CardManager cards, PlayerActionHandler playerAction) {
         this.player = player;
-        this.dealer = new Dealer();
-        this.io = new IOHandler();
-        this.state = new GameState(player, dealer);
-        this.payout = new PayoutHandler(player, bet);
-        this.cards = new CardManager();
-        this.playerAction = new PlayerActionHandler(player, io, state, cards, bet, payout);
+        this.dealer = dealer;
+        this.io = io;
+        this.state = state;
+        this.payout = payout;
+        this.cards = cards;
+        this.playerAction = playerAction;
+
         this.bet = bet;
         this.currentMove = 1;
         //this.numberOfSplits = 0;
         this.isSplit = false;
+    }
 
+    public void start() {
         playGame();
     }
 
