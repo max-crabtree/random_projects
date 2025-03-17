@@ -13,6 +13,7 @@ public class GameManager {
                 case ("s"): RuleFileManager.viewSettings(); break;
                 //case ("l"): loadPlayer(); return;
                 //case ("n"): createNewPlayer(); return;
+                case ("g"): startGameLoop(new Player(1000)); // temporary
                 default: continue;
             }
         }

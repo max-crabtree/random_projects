@@ -36,12 +36,12 @@ public class Game {
     }
 
     private void checkEarlySurrender() {
-        if (dealer.getHandValue() == CardRank.TEN.getValue() || dealer.getHandValue() == CardRank.ACE.getValue()) {
-            if (RuleConstants.CAN_EARLY_SURRENDER) {
-                playerAction.handleSurrender();
-            } else if (cards.peekNextCard().getValue() + dealer.getHandValue() == RuleConstants.BLACKJACK_VALUE) {
-                cards.addCardToHand(dealer.getHand()); // make same card as peekNextCard
-            }
+        Deck currentDeck = cards.getRandomDeck();
+
+        if (RuleConstants.CAN_EARLY_SURRENDER) {
+            playerAction.handleSurrender();
+        } else if (cards.peekNextCard().getValue() + dealer.getHandValue() == RuleConstants.BLACKJACK_VALUE) {
+            cards.addCardToHand(currentDeck, dealer.getHand());
         }
     }
 
@@ -79,15 +79,15 @@ public class Game {
 
     private void getAndConfirmResults() {
         if (player.getHandValue() > dealer.getHandValue() || state.dealerBusted()) {
-            UserInterface.printSuccess("Player wins!");
+            UserInterface.printSuccess("Player wins!\n");
             payout.win();
         }
         else if (player.getHandValue() == dealer.getHandValue()) {
-            UserInterface.printGeneral("Hands are equal so there is a push!");
+            UserInterface.printGeneral("Hands are equal so there is a push!\n");
             payout.pushBet();
         }
         else {
-            UserInterface.printFail("Dealer wins!");
+            UserInterface.printFail("Dealer wins!\n");
             UserInterface.printFail(String.format("You lose $%d!\n", bet));
         }
     }
@@ -102,7 +102,10 @@ public class Game {
         cards.addCardToHand(player.getHand());
         cards.addCardToHand(player.getHand());
 
-        checkEarlySurrender();
+        boolean dealerHasTenOrAce = (dealer.getHandValue() == CardRank.TEN.getValue() || dealer.getHandValue() == CardRank.ACE.getValue());
+        if (dealerHasTenOrAce) {
+            checkEarlySurrender();
+        }
 
         checkLateSurrender();
     }

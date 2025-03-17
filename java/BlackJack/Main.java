@@ -20,7 +20,7 @@ public class Main {
         gameManager.startMenu();
 
         //Player player = gameManager.selectPlayer();
-//
+        //
         //Player player = new Player(RuleConstants.STARTING_MONEY);
         //gameManager.startGameLoop(player);
     }

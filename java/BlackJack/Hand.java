@@ -93,6 +93,6 @@ public class Hand {
             finalString.append(cards[i].toString() + " ");
         }
 
-        return String.format("Hand: %s | Value: %d", finalString.toString(), getHandValue());
+        return String.format("Hand: %s | Value: %d\n", finalString.toString(), getHandValue());
     }
 }
