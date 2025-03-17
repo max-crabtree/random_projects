@@ -67,22 +67,31 @@ public class Game {
         }
     }
 
+    // might move to a different class
+    private void doDealerDelay() {
+        try {
+            Thread.sleep(RuleConstants.DEALER_DELAY_MS);
+        } 
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void doDealerMoves() {
         while (state.isDealerActive()) {
             UserInterface.printHands(player, dealer);
             cards.addCardToHand(dealer.getHand());
-            try {
-                Thread.sleep(RuleConstants.DEALER_DELAY_MS);
-            } 
-            catch (InterruptedException e) {
-                e.printStackTrace();
+            doDealerDelay();
+
+            if (state.dealerWillStand()) {
+                UserInterface.printHands(player, dealer);
+                doDealerDelay();
+                UserInterface.printGeneral(String.format("Dealer stands on %d!\n", dealer.getHandValue()));
             }
         }
     }
 
     private void getAndConfirmResults() {
-        UserInterface.printHands(player, dealer); // temp
-
         if (player.getHandValue() > dealer.getHandValue() || state.dealerBusted()) {
             UserInterface.printSuccess("Player wins!\n");
             payout.win();

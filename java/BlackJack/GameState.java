@@ -2,14 +2,12 @@ public class GameState {
     private Player player;
     private Dealer dealer;
     private boolean playerStand;
-    private boolean dealerStand;
     private boolean playerSurrendered;
 
     public GameState(Player player, Dealer dealer) {
         this.player = player;
         this.dealer = dealer;
         this.playerStand = false;
-        this.dealerStand = false;
         this.playerSurrendered = false;
     }
 
@@ -18,7 +16,7 @@ public class GameState {
     }
 
     public boolean isDealerActive() {
-        return !(dealerStand || dealerBusted() || hasDealerGotBlackjack());
+        return !(dealerWillStand() || dealerBusted() || hasDealerGotBlackjack());
     }
 
     public boolean playerBusted() {
@@ -29,20 +27,17 @@ public class GameState {
         return dealer.getHandValue() > RuleConstants.BLACKJACK_VALUE;
     }
 
-    public boolean hasPlayerStand() {
-        return playerStand;
-    }
-
     public void setPlayerStand(boolean playerStand) {
         this.playerStand = playerStand;
     }
 
-    public boolean hasDealerStand() {
-        return dealerStand;
-    }
-
-    public void setDealerStand(boolean dealerStand) {
-        this.dealerStand = dealerStand;
+    // may redo this...
+    public boolean dealerWillStand() {
+        boolean dealerSoftStand = RuleConstants.DEALER_HITS_ON_SOFT_STAND && dealer.getHandValue() == RuleConstants.DEALER_STAND_VALUE;
+        boolean dealerHandContainsAce = dealer.getHand().contains(new Card(CardRank.ACE));
+        boolean dealerStandValueButNotBust = dealer.getHandValue() > RuleConstants.DEALER_STAND_VALUE && dealer.getHandValue() <= RuleConstants.BLACKJACK_VALUE;
+        
+        return (dealerSoftStand && dealerHandContainsAce) || (dealerStandValueButNotBust);
     }
 
     public boolean hasPlayerSurrendered() {

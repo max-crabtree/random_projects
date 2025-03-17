@@ -31,6 +31,7 @@ public class CardManager {
         hand.calculateAceValues();
     }
 
+    /* Add card to specified deck */
     public void addCardToHand(Deck deck, Hand hand) {
         hand.addCard(deck.getTopCard());
         deck.removeTopCard();
