@@ -83,7 +83,7 @@ public class Hand {
         StringBuffer finalString = new StringBuffer();
 
         if (isEmpty()) {
-            return "Hand is empty!";
+            return "Hand is empty!\n";
         }
 
         for (int i = 0; i < cards.length; i++) {

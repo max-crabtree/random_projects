@@ -59,7 +59,7 @@ public class Game {
             UserInterface.printHands(player, dealer);
             currentMove++;
             if (RuleConstants.LIMIT_PLAYER_TURNS && (currentMove > RuleConstants.MAX_PLAYER_TURNS)) {
-                UserInterface.printError("Max player turns reached!");
+                UserInterface.printError("Max player turns reached!\n");
                 state.setPlayerStand(true);
                 break;
             }
@@ -81,6 +81,8 @@ public class Game {
     }
 
     private void getAndConfirmResults() {
+        UserInterface.printHands(player, dealer); // temp
+
         if (player.getHandValue() > dealer.getHandValue() || state.dealerBusted()) {
             UserInterface.printSuccess("Player wins!\n");
             payout.win();
@@ -121,22 +123,21 @@ public class Game {
         doPlayerMoves();
 
         if (state.hasPlayerSurrendered()) {
-            UserInterface.printGeneral("You surrendered...");
+            UserInterface.printGeneral("You surrendered...\n");
             player.setHand(new Hand());
             return;
         }
 
         if (state.playerBusted()) {
-            UserInterface.printHands(player, dealer);
             player.setHand(new Hand());
             return;
         }
 
         if (state.hasPlayerGotBlackjack()) {
-            UserInterface.printSuccess("You got a Blackjack!");
+            UserInterface.printSuccess("You got a Blackjack!\n");
         }
 
-        UserInterface.printGeneral("\nThe dealer now makes their moves...");
+        UserInterface.printGeneral("\nThe dealer now makes their moves...\n");
 
         doDealerMoves();
 

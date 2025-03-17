@@ -45,7 +45,7 @@ public class RuleValidator {
             ruleValue = rule.getValue();
             if (ruleValue instanceof Integer && (int)ruleValue <= 0 ||
                 ruleValue instanceof Double  && (double)ruleValue <= 0) {
-                UserInterface.printError(String.format("%s cannot be <= 0!", rule.name()));
+                UserInterface.printError(String.format("%s cannot be <= 0!\n", rule.name()));
                 return true;
             }
         }
@@ -57,7 +57,7 @@ public class RuleValidator {
         for (Rule rule : rules) {
             ruleValue = rule.getValue();
             if (ruleValue instanceof Double) {
-                UserInterface.printError(String.format("%s cannot be a Double!", rule.name()));
+                UserInterface.printError(String.format("%s cannot be a Double!\n", rule.name()));
                 return true;
             }
         }
@@ -66,12 +66,12 @@ public class RuleValidator {
 
     public static boolean canDoubleDown(Player player) {
         if (!RuleConstants.CAN_DOUBLE_DOWN) {
-            UserInterface.printError("Double down disabled in rules!");
+            UserInterface.printError("Double down disabled in rules!\n");
             return false;
         }
 
         if (!RuleConstants.CAN_DOUBLE_DOWN_AFTER_SPLIT && player.getTotalSplits() > 0) {
-            UserInterface.printError("Double down after split disabled in rules!");
+            UserInterface.printError("Double down after split disabled in rules!\n");
             return false;
         }
         
@@ -80,12 +80,12 @@ public class RuleValidator {
 
     public static boolean canSplit(Player player) {
         if (player.getTotalSplits() + 1 > RuleConstants.MAX_SPLITS_ALLOWED) {
-            UserInterface.printError("Maximum number of splits reached!");
+            UserInterface.printError("Maximum number of splits reached!\n");
             return false;
         }
 
         if (!RuleConstants.CAN_SPLIT) {
-            UserInterface.printError("Splitting disabled in rules!");
+            UserInterface.printError("Splitting disabled in rules!\n");
             return false;
         }
 
@@ -93,7 +93,7 @@ public class RuleValidator {
         
         // current move must be ONE as well! add this later
         if (playerCards[0].getValue() != playerCards[1].getValue()) {
-            UserInterface.printError("You can't split!");
+            UserInterface.printError("You can't split!\n");
             return false;
         }
 

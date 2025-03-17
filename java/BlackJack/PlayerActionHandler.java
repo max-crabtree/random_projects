@@ -1,13 +1,15 @@
 public class PlayerActionHandler {
     private Player player;
+    private Dealer dealer;
     private IOHandler io;
     private GameState state;
     private CardManager cards;
     private int bet;
     private PayoutHandler payout;
 
-    public PlayerActionHandler(Player player, IOHandler io, GameState state, CardManager cards, int bet, PayoutHandler payout) {
+    public PlayerActionHandler(Player player, Dealer dealer, IOHandler io, GameState state, CardManager cards, int bet, PayoutHandler payout) {
         this.player = player;
+        this.dealer = dealer;
         this.io = io;
         this.state = state;
         this.cards = cards;
@@ -16,8 +18,6 @@ public class PlayerActionHandler {
     }
     
     public void doPlayerMove(Move move) {
-        //UserInterface.printHands(player, dealer);
-
         switch (move) {
             case Move.HIT: hit(); break;
             case Move.STAND: state.setPlayerStand(true); break;
@@ -36,8 +36,8 @@ public class PlayerActionHandler {
     }
 
     public void bust() {
-        //UserInterface.printHands(player, dealer);
-        UserInterface.printFail(String.format("You busted! You lost $%d\n%s", bet, player.getBankAccount().toString()));
+        UserInterface.printHands(player, dealer);
+        UserInterface.printFail(String.format("You busted! You lost $%d\n%s\n", bet, player.getBankAccount().toString()));
     }
 
     public void doubleDown() {
@@ -58,7 +58,7 @@ public class PlayerActionHandler {
         }
 
         if (canWithdraw) {
-            UserInterface.printGeneral(String.format("You double down, bringing your bet to $%d!", bet * 2));
+            UserInterface.printGeneral(String.format("You double down, bringing your bet to $%d!\n", bet * 2));
             cards.addCardToHand(player.getHand());
             bet = bet * 2;
             state.setPlayerStand(true);
@@ -76,7 +76,7 @@ public class PlayerActionHandler {
     }
 
     public void handleSurrender() {
-        //UserInterface.printHands(player, dealer);
+        UserInterface.printHands(player, dealer);
         state.setPlayerSurrendered(io.getPlayerYesOrNo("Would you like to surrender and get back half your bet?"));
         if (state.hasPlayerSurrendered()) {
             payout.surrenderBet();
@@ -84,7 +84,7 @@ public class PlayerActionHandler {
     }
 
     public void insurance(boolean isActive) {
-        UserInterface.printGeneral(String.format("You will wager another $%d for insurance...", bet / 2));
+        UserInterface.printGeneral(String.format("You will wager another $%d for insurance...\n", bet / 2));
 
         try {
             player.getBankAccount().withdraw(bet / 2);
@@ -94,10 +94,10 @@ public class PlayerActionHandler {
 
         //cards.addCardToHand(dealer.); ...
         if (state.hasDealerGotBlackjack()) {
-            UserInterface.printSuccess("Your insurance bet was successful! $%d has been deposited into your account");
+            UserInterface.printSuccess("Your insurance bet was successful! $%d has been deposited into your account\n");
             payout.insuranceBet();
         } else {
-            UserInterface.printGeneral("Your insurance bet was unsuccessful! Your insurance bet has been withdrawn from your account");
+            UserInterface.printGeneral("Your insurance bet was unsuccessful! Your insurance bet has been withdrawn from your account\n");
         }
     }
 }

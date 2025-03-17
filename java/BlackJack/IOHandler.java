@@ -12,10 +12,12 @@ public class IOHandler {
                 case "s": case "stand": return Move.STAND;
                 case "dd": case "double down": return Move.DOUBLE_DOWN;
                 case "split": return Move.SPLIT;
-                default: 
+                default:
+                    UserInterface.printGeneral("Possible moves are: ");
                     for (Move move : Move.values()) { 
-                        System.out.print(move + " "); 
-                    } 
+                        UserInterface.printGeneral(move + " "); 
+                    }
+                    UserInterface.printGeneral("\n");
                     continue;
             }
         }
@@ -41,7 +43,7 @@ public class IOHandler {
                 inputtedInt = inp.nextInt();
                 return inputtedInt;
             } catch (InputMismatchException e) {
-                inp.nextLine(); // Clear input stream
+                flushStream();
                 continue;
             }
         }
@@ -49,5 +51,9 @@ public class IOHandler {
 
     public String getPlayerLowercaseString() {
         return inp.nextLine().toLowerCase();
+    }
+
+    public void flushStream() {
+        inp.nextLine();
     }
 }

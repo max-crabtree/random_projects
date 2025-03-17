@@ -43,7 +43,7 @@ public class BankAccount {
     public boolean withdraw(int withdrawAmount) throws InvalidWithdrawalException {
         if (withdrawAmount > bankBalance ||
             withdrawAmount > RuleConstants.MAX_BET ||
-            withdrawAmount == 0) {
+            withdrawAmount <= 0) {
             throw new InvalidWithdrawalException(String.format("You cannot withdraw $%d!\n%s", withdrawAmount, this.toString()));
         }
         bankBalance -= withdrawAmount;
@@ -52,6 +52,6 @@ public class BankAccount {
 
     @Override
     public String toString() {
-        return String.format("Current balance: $%d", bankBalance);
+        return String.format("Current balance: $%d\n", bankBalance);
     }
 }

@@ -8,7 +8,7 @@ public class PayoutHandler {
     }
 
     public void pushBet() {
-        UserInterface.printGeneral(String.format("Hands are equal so there is a push! Your account has been deposited the initial bet of $%d", bet));
+        UserInterface.printGeneral(String.format("Hands are equal so there is a push! Your account has been deposited the initial bet of $%d\n", bet));
         player.getBankAccount().deposit(bet);
     }
 

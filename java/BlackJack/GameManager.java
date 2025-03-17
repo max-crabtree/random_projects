@@ -31,6 +31,7 @@ public class GameManager {
         boolean canWithdraw = false;
 
         while (gameIsActive) {
+            io.flushStream();
             gameIsActive = io.getPlayerYesOrNo("Would you like to play a game?");
 
             if (!gameIsActive) {
@@ -55,7 +56,7 @@ public class GameManager {
             GameState state = new GameState(player, dealer);
             PayoutHandler payout = new PayoutHandler(player, bettingAmount);
             CardManager cards = new CardManager();
-            PlayerActionHandler playerAction = new PlayerActionHandler(player, io, state, cards, bettingAmount, payout);
+            PlayerActionHandler playerAction = new PlayerActionHandler(player, dealer, io, state, cards, bettingAmount, payout); // too many parameters??
 
             Game game = new Game(player, bettingAmount, dealer, io, state, payout, cards, playerAction);
             game.start();
@@ -63,7 +64,7 @@ public class GameManager {
             canWithdraw = false;
             player.setTotalSplits(0);
         }
-        UserInterface.printCustom("Bye", TerminalColour.BG_YELLOW);
+        UserInterface.printCustom("Bye\n\n", TerminalColour.BG_YELLOW);
     }
 }
     

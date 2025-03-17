@@ -56,7 +56,7 @@ public class Stack {
         Node currentNode = top;
 
         if (isEmpty()) {
-            return "Stack is empty!";
+            return "Stack is empty!\n";
         }
         
         while (currentNode.getNext() != null) {

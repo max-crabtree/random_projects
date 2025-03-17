@@ -4,6 +4,4 @@ Add "helper" mode; gives best possible move to take for winning
 Implement split number checking
 Make customisations for TerminalColour
 Fix dealer not standing on correct number
-print hands before bust
-fix MORE newlines
 Expand into other card games? (Poker, etc...)

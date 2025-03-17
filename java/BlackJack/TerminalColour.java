@@ -32,7 +32,31 @@ public enum TerminalColour {
         return code;
     }
 
+    private String processNewLines(String text) {
+        char[] textArray = text.toCharArray();
+        int numOfNewLines = 0;
+
+        for (int i = textArray.length - 1; i >= 0; i--) {
+            char currentChar = textArray[i];
+
+            if (currentChar != '\n') {
+                break;
+            }
+
+            textArray[i] = '\u0000'; // No space
+            numOfNewLines++;
+        }
+
+        char[] newlines = new char[numOfNewLines];
+
+        for (int i = 0; i < numOfNewLines; i++) {
+            newlines[i] = '\n';
+        }
+
+        return code + String.valueOf(textArray) + RESET.code + String.valueOf(newlines);
+    }
+
     public String apply(String text) {
-        return code + text + RESET.code;
+        return processNewLines(text);
     }
 }
