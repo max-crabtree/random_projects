@@ -30,7 +30,8 @@ public class UserInterface {
     public static void printMainMenu() {
         printCustom("s) view settings\n" + 
                     "l) load existing player\n" +
-                    "n) create new player\n:" +
-                    "g) start game (DEBUG)\n", TerminalColour.YELLOW);
+                    "n) create new player\n" +
+                    "g) start game (DEBUG)\n" +
+                    "q) quit game\n: ", TerminalColour.YELLOW);
     }
 }

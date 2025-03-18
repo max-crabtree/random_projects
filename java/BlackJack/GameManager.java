@@ -14,6 +14,7 @@ public class GameManager {
                 //case ("l"): loadPlayer(); return;
                 //case ("n"): createNewPlayer(); return;
                 case ("g"): startGameLoop(new Player(1000)); // temporary
+                case ("q"): return;
                 default: continue;
             }
         }
