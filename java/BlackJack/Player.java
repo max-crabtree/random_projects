@@ -1,13 +1,19 @@
 public class Player {
+    private String name;
     private Hand hand;
     private Hand splitHand;
     private BankAccount bank;
     private int totalSplits;
 
-    public Player(int money) {
+    public Player(String name, int money) {
+        this.name = name;
         this.hand = new Hand();
         this.bank = new BankAccount(money);
         this.totalSplits = 0;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public BankAccount getBankAccount() {

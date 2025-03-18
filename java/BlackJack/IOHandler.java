@@ -49,11 +49,16 @@ public class IOHandler {
         }
     }
 
-    public String getPlayerLowercaseString() {
+    public String getPlayerLowercaseString(String prompt) {
+        UserInterface.printGeneral(prompt + ": ");
         return inp.nextLine().toLowerCase();
     }
 
     public void flushStream() {
         inp.nextLine();
+    }
+
+    public String capitaliseString(String s) {
+        return s.substring(0, 1).toUpperCase() + s.substring(1);
     }
 }

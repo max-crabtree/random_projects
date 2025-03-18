@@ -1,19 +1,21 @@
 public class GameManager {
     private IOHandler io;
+    private GameFilesManager gameFiles;
 
-    public GameManager(IOHandler io) { 
+    public GameManager(IOHandler io, GameFilesManager gameFiles) { 
         this.io = io;
+        this.gameFiles = gameFiles;
     }
 
     /* Move to seperate class */
     public void startMenu() {
+        Player p;
         while (true) {
             UserInterface.printMainMenu();
-            switch (io.getPlayerLowercaseString()) {
+            switch (io.getPlayerLowercaseString("")) { // change menu function possibly
                 case ("s"): RuleFileManager.viewSettings(); break;
-                //case ("l"): loadPlayer(); return;
-                //case ("n"): createNewPlayer(); return;
-                case ("g"): startGameLoop(new Player(1000)); // temporary
+                case ("l"): p = gameFiles.loadPlayerFromFile(); startGameLoop(p); return;
+                case ("n"): p = createNewPlayer(); startGameLoop(p); return;
                 case ("q"): return;
                 default: continue;
             }
@@ -22,9 +24,19 @@ public class GameManager {
         
     }
 
-    public Player selectPlayer() {
-        return new Player(0);
+    private Player createNewPlayer() {
+        String name = io.getPlayerLowercaseString("Enter your new player name here");
+        name = io.capitaliseString(name);
+        Player player = new Player(name, RuleConstants.STARTING_MONEY);
+
+        gameFiles.addPlayerToFile(player);
+
+        return player;
     }
+
+    //public Player selectPlayer() {
+    //    return new Player(0);
+    //}
 
     public void startGameLoop(Player player) {
         boolean gameIsActive = true;
