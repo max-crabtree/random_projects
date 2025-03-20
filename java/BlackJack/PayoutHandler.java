@@ -1,8 +1,10 @@
 public class PayoutHandler {
-    Player player;
-    int bet;
+    private GameState state;
+    private Player player;
+    private int bet;
     
-    public PayoutHandler(Player player, int bet) {
+    public PayoutHandler(GameState state, Player player, int bet) {
+        this.state = state;
         this.player = player;
         this.bet = bet;
     }
@@ -16,7 +18,7 @@ public class PayoutHandler {
         double mult;
         int finalAmount;
 
-        if (player.hasBlackjack()) {
+        if (state.hasPlayerGotBlackjack()) {
             mult = RuleConstants.BLACKJACK_PAYOUT_MULTIPLIER;
         } else {
             mult = RuleConstants.PAYOUT_MULTIPLIER;

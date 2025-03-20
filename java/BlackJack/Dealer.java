@@ -14,10 +14,6 @@ public class Dealer {
         return hand.getHandValue();
     }
 
-    public boolean hasBlackjack() {
-        return (getHandValue() == RuleConstants.BLACKJACK_VALUE);
-    }
-
     @Override
     public String toString() {
         return "Dealer " + hand.toString(); 

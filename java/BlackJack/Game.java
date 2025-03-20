@@ -49,7 +49,7 @@ public class Game {
     }
 
     private void checkLateSurrender() {
-        if (!dealer.hasBlackjack() && RuleConstants.CAN_LATE_SURRENDER) {
+        if (!state.hasDealerGotBlackjack() && RuleConstants.CAN_LATE_SURRENDER) {
             playerAction.handleSurrender();
         }
     }

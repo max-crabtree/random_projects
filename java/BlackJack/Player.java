@@ -58,10 +58,6 @@ public class Player {
         hand.addCard(card);
     }
 
-    public boolean hasBlackjack() {
-        return (getHandValue() == RuleConstants.BLACKJACK_VALUE);
-    }
-
     @Override
     public String toString() {
         return String.format("Player %s", hand.toString());

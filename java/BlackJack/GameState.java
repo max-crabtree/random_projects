@@ -49,10 +49,10 @@ public class GameState {
     }
 
     public boolean hasPlayerGotBlackjack() {
-        return player.hasBlackjack();
+        return player.getHandValue() == RuleConstants.BLACKJACK_VALUE;
     }
 
     public boolean hasDealerGotBlackjack() {
-        return dealer.hasBlackjack();
+        return dealer.getHandValue() == RuleConstants.BLACKJACK_VALUE;
     }
 }

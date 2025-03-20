@@ -17,7 +17,8 @@ public enum Rule {
     LIMIT_PLAYER_TURNS(true),
     MAX_PLAYER_TURNS(5),
     MAXIMUM_BET(500),
-    STARTING_MONEY(1000);
+    STARTING_MONEY(1000),
+    MAX_NUMBER_OF_PLAYERS(50);
     
     private Object defaultValue;
 

@@ -8,4 +8,5 @@ Add "max cards in hand" limitation, rule, and logic
 Make RuleFileManager better, loadPlayerFromFile as well
 Merge together RuleFileManager and GameFilesManager probably...
 Implement MAX_NUM_OF_PLAYERS for players.txt
+Change Deck type to Array / Stack, not linked list
 Expand into other card games? (Poker, etc...)

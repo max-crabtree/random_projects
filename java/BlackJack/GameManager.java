@@ -67,7 +67,7 @@ public class GameManager {
             Dealer dealer = new Dealer();
             IOHandler io = new IOHandler();
             GameState state = new GameState(player, dealer);
-            PayoutHandler payout = new PayoutHandler(player, bettingAmount);
+            PayoutHandler payout = new PayoutHandler(state, player, bettingAmount);
             CardManager cards = new CardManager();
             PlayerActionHandler playerAction = new PlayerActionHandler(player, dealer, io, state, cards, bettingAmount, payout); // too many parameters??
 

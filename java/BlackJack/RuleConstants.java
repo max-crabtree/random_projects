@@ -5,6 +5,7 @@ public class RuleConstants {
     public static final int MAX_SPLITS_ALLOWED =              (int) Rule.MAX_SPLITS_ALLOWED.getValue();
     public static final int MAX_PLAYER_TURNS =                (int) Rule.MAX_PLAYER_TURNS.getValue();
     public static final int MAX_BET =                         (int) Rule.MAXIMUM_BET.getValue();
+    public static final int MAX_NUMBER_OF_PLAYERS =           (int) Rule.MAX_NUMBER_OF_PLAYERS.getValue();
     public static final int DECK_COUNT =                      (int) Rule.DECK_COUNT.getValue();
     public static final int STARTING_MONEY =                  (int) Rule.STARTING_MONEY.getValue();
     public static final double PAYOUT_MULTIPLIER =            (double) Rule.PAYOUT_MULTIPLIER.getValue();
