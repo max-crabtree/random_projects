@@ -1,16 +1,14 @@
 public class PlayerActionHandler {
     private Player player;
     private Dealer dealer;
-    private IOHandler io;
     private GameState state;
     private CardManager cards;
     private int bet;
     private PayoutHandler payout;
 
-    public PlayerActionHandler(Player player, Dealer dealer, IOHandler io, GameState state, CardManager cards, int bet, PayoutHandler payout) {
+    public PlayerActionHandler(Player player, Dealer dealer, GameState state, CardManager cards, int bet, PayoutHandler payout) {
         this.player = player;
         this.dealer = dealer;
-        this.io = io;
         this.state = state;
         this.cards = cards;
         this.bet = bet;
@@ -44,7 +42,7 @@ public class PlayerActionHandler {
         boolean canWithdraw;
 
         if (!RuleValidator.canDoubleDown(player)) {
-            doPlayerMove(io.getPlayerMove());
+            doPlayerMove(IOHandler.getPlayerMove());
             return;
         }
 
@@ -67,7 +65,7 @@ public class PlayerActionHandler {
 
     public void split() {
         if (!RuleValidator.canSplit(player)) {
-            doPlayerMove(io.getPlayerMove());
+            doPlayerMove(IOHandler.getPlayerMove());
             return;
         }
 
@@ -77,7 +75,7 @@ public class PlayerActionHandler {
 
     public void handleSurrender() {
         UserInterface.printHands(player, dealer);
-        state.setPlayerSurrendered(io.getPlayerYesOrNo("Would you like to surrender and get back half your bet?"));
+        state.setPlayerSurrendered(IOHandler.getPlayerYesOrNo("Would you like to surrender and get back half your bet?"));
         if (state.hasPlayerSurrendered()) {
             payout.surrenderBet();
         }

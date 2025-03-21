@@ -6,11 +6,9 @@ import java.io.IOException;
 
 public class GameFilesManager {
     private static final String PLAYER_FILE_DELIM = " - ";
-    private IOHandler io;
     private File pathToStoreDir, pathToGamesDir, pathToPlayersFile;
 
-    public GameFilesManager(IOHandler io, String storeDir, String gamesDir, String playersFileName) {
-        this.io = io;
+    public GameFilesManager(String storeDir, String gamesDir, String playersFileName) {
         this.pathToStoreDir = new File(storeDir);
         this.pathToGamesDir = new File(storeDir + gamesDir);
         this.pathToPlayersFile = new File(storeDir + playersFileName);
@@ -40,7 +38,7 @@ public class GameFilesManager {
         String line;
         String chosenPlayer;
         String[] tok;
-        String[] playerMoneyArray = new String[2 * 50]; // if MAX_NUM_OF_PLAYERS = 50
+        String[] playerMoneyArray = new String[2 * RuleConstants.MAX_NUMBER_OF_PLAYERS];
         StringBuffer fileStr = new StringBuffer();
 
         try {
@@ -59,8 +57,8 @@ public class GameFilesManager {
 
         UserInterface.printGeneral(fileStr.toString());
         while (true) {
-            chosenPlayer = io.getPlayerLowercaseString("Which player would you like to load? (type name)");
-            chosenPlayer = io.capitaliseString(chosenPlayer);
+            chosenPlayer = IOHandler.getPlayerLowercaseString("Which player would you like to load? (type name)");
+            chosenPlayer = IOHandler.capitaliseString(chosenPlayer);
 
             // MAX_PLAYER_NUMS again
             String currentToken;

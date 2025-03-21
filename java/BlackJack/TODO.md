@@ -7,6 +7,7 @@ Add a simple GUI: Gameplay, dropdowns for rules(?), etc...
 Add "max cards in hand" limitation, rule, and logic
 Make RuleFileManager better, loadPlayerFromFile as well
 Merge together RuleFileManager and GameFilesManager probably...
-Implement MAX_NUM_OF_PLAYERS for players.txt
 Change Deck type to Array / Stack, not linked list
+Refactor some(?) classes to static if needed
+Make player BackAccount update in player.txt
 Expand into other card games? (Poker, etc...)

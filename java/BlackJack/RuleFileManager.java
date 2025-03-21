@@ -6,11 +6,9 @@ import java.io.IOException;
 
 public class RuleFileManager {
     String fileName;
-    IOHandler io;
 
-    public RuleFileManager(String fileName, IOHandler io) {
+    public RuleFileManager(String fileName) {
         this.fileName = fileName;
-        this.io = io;
     }
 
     /* Improve this code */
@@ -21,7 +19,7 @@ public class RuleFileManager {
             reader = new BufferedReader(new FileReader(fileName));    
             parseRulesFile(reader);
         } catch (FileNotFoundException e) {
-            boolean isCreatingNew = io.getPlayerYesOrNo(String.format("File %s not found! Would you like to create a new file with default values?: ", fileName));
+            boolean isCreatingNew = IOHandler.getPlayerYesOrNo(String.format("File %s not found! Would you like to create a new file with default values?: ", fileName));
             if (isCreatingNew) {
                 makeNewDefaultFile();
             } else {

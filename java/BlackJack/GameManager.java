@@ -1,9 +1,7 @@
 public class GameManager {
-    private IOHandler io;
     private GameFilesManager gameFiles;
 
-    public GameManager(IOHandler io, GameFilesManager gameFiles) { 
-        this.io = io;
+    public GameManager(GameFilesManager gameFiles) { 
         this.gameFiles = gameFiles;
     }
 
@@ -12,7 +10,7 @@ public class GameManager {
         Player p;
         while (true) {
             UserInterface.printMainMenu();
-            switch (io.getPlayerLowercaseString("")) { // change menu function possibly
+            switch (IOHandler.getPlayerLowercaseString("")) { // change menu function possibly
                 case ("s"): RuleFileManager.viewSettings(); break;
                 case ("l"): p = gameFiles.loadPlayerFromFile(); startGameLoop(p); return;
                 case ("n"): p = createNewPlayer(); startGameLoop(p); return;
@@ -25,8 +23,8 @@ public class GameManager {
     }
 
     private Player createNewPlayer() {
-        String name = io.getPlayerLowercaseString("Enter your new player name here");
-        name = io.capitaliseString(name);
+        String name = IOHandler.getPlayerLowercaseString("Enter your new player name here");
+        name = IOHandler.capitaliseString(name);
         Player player = new Player(name, RuleConstants.STARTING_MONEY);
 
         gameFiles.addPlayerToFile(player);
@@ -44,8 +42,8 @@ public class GameManager {
         boolean canWithdraw = false;
 
         while (gameIsActive) {
-            io.flushStream();
-            gameIsActive = io.getPlayerYesOrNo("Would you like to play a game?");
+            IOHandler.flushStream();
+            gameIsActive = IOHandler.getPlayerYesOrNo("Would you like to play a game?");
 
             if (!gameIsActive) {
                 break;
@@ -54,7 +52,7 @@ public class GameManager {
             while (!canWithdraw) {
                 final int MAX_BET = RuleConstants.MAX_BET;
 
-                bettingAmount = io.getPlayerInt(String.format("How much would you like to bet? (max: %d)\nMoney in the bank: $%d: ", MAX_BET, player.getBankBalance()));
+                bettingAmount = IOHandler.getPlayerInt(String.format("How much would you like to bet? (max: %d)\nMoney in the bank: $%d: ", MAX_BET, player.getBankBalance()));
                 
                 try {
                     player.getBankAccount().withdraw(bettingAmount);
@@ -65,13 +63,12 @@ public class GameManager {
             }
 
             Dealer dealer = new Dealer();
-            IOHandler io = new IOHandler();
             GameState state = new GameState(player, dealer);
             PayoutHandler payout = new PayoutHandler(state, player, bettingAmount);
             CardManager cards = new CardManager();
-            PlayerActionHandler playerAction = new PlayerActionHandler(player, dealer, io, state, cards, bettingAmount, payout); // too many parameters??
+            PlayerActionHandler playerAction = new PlayerActionHandler(player, dealer, state, cards, bettingAmount, payout); // too many parameters??
 
-            Game game = new Game(player, bettingAmount, dealer, io, state, payout, cards, playerAction);
+            Game game = new Game(player, bettingAmount, dealer, state, payout, cards, playerAction);
             game.start();
             
             canWithdraw = false;

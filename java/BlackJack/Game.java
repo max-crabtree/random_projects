@@ -1,7 +1,6 @@
 public class Game {
     private Player player;
     private Dealer dealer;
-    private IOHandler io;
     private GameState state;
     private PayoutHandler payout;
     private CardManager cards;
@@ -12,10 +11,9 @@ public class Game {
     //private int numberOfSplits; // work on this
     private boolean isSplit;
 
-    public Game(Player player, int bet, Dealer dealer, IOHandler io, GameState state, PayoutHandler payout, CardManager cards, PlayerActionHandler playerAction) {
+    public Game(Player player, int bet, Dealer dealer, GameState state, PayoutHandler payout, CardManager cards, PlayerActionHandler playerAction) {
         this.player = player;
         this.dealer = dealer;
-        this.io = io;
         this.state = state;
         this.payout = payout;
         this.cards = cards;
@@ -33,7 +31,7 @@ public class Game {
 
     private void checkInsurance() {
         if (RuleConstants.CAN_USE_INSURANCE && dealer.getHandValue() == CardRank.ACE.getValue()) {
-            boolean playingInsurance = io.getPlayerYesOrNo("Would you like to play insurance?");
+            boolean playingInsurance = IOHandler.getPlayerYesOrNo("Would you like to play insurance?");
             playerAction.insurance(playingInsurance);
         }
     }
@@ -63,7 +61,7 @@ public class Game {
                 state.setPlayerStand(true);
                 break;
             }
-            playerAction.doPlayerMove(io.getPlayerMove());
+            playerAction.doPlayerMove(IOHandler.getPlayerMove());
         }
     }
 

@@ -2,9 +2,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class IOHandler {
-    Scanner inp = new Scanner(System.in);
+    private static Scanner inp = new Scanner(System.in);
 
-    public Move getPlayerMove() {
+    public IOHandler() {}
+
+    public static Move getPlayerMove() {
         while (true) {
             UserInterface.printGeneral("What move would you like to make?: ");
             switch (inp.nextLine().toLowerCase()) {
@@ -23,7 +25,7 @@ public class IOHandler {
         }
     }
 
-    public boolean getPlayerYesOrNo(String prompt) {
+    public static boolean getPlayerYesOrNo(String prompt) {
         while (true) {
             UserInterface.printGeneral(prompt + ": ");
             switch (inp.nextLine().toLowerCase()) {
@@ -34,7 +36,7 @@ public class IOHandler {
         }
     }
 
-    public int getPlayerInt(String prompt) {
+    public static int getPlayerInt(String prompt) {
         int inputtedInt;
 
         while (true) {
@@ -49,16 +51,16 @@ public class IOHandler {
         }
     }
 
-    public String getPlayerLowercaseString(String prompt) {
+    public static String getPlayerLowercaseString(String prompt) {
         UserInterface.printGeneral(prompt + ": ");
         return inp.nextLine().toLowerCase();
     }
 
-    public void flushStream() {
+    public static void flushStream() {
         inp.nextLine();
     }
 
-    public String capitaliseString(String s) {
+    public static String capitaliseString(String s) {
         return s.substring(0, 1).toUpperCase() + s.substring(1);
     }
 }
