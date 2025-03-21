@@ -28,13 +28,9 @@ public class GameManager {
         Player player = new Player(name, RuleConstants.STARTING_MONEY);
 
         gameFiles.addPlayerToFile(player);
-
+        
         return player;
     }
-
-    //public Player selectPlayer() {
-    //    return new Player(0);
-    //}
 
     public void startGameLoop(Player player) {
         boolean gameIsActive = true;
@@ -42,7 +38,6 @@ public class GameManager {
         boolean canWithdraw = false;
 
         while (gameIsActive) {
-            IOHandler.flushStream();
             gameIsActive = IOHandler.getPlayerYesOrNo("Would you like to play a game?");
 
             if (!gameIsActive) {
@@ -50,9 +45,7 @@ public class GameManager {
             }
 
             while (!canWithdraw) {
-                final int MAX_BET = RuleConstants.MAX_BET;
-
-                bettingAmount = IOHandler.getPlayerInt(String.format("How much would you like to bet? (max: %d)\nMoney in the bank: $%d: ", MAX_BET, player.getBankBalance()));
+                bettingAmount = IOHandler.getPlayerInt(String.format("How much would you like to bet? (max: %d)\nMoney in the bank: $%d: ", RuleConstants.MAX_BET, player.getBankBalance()));
                 
                 try {
                     player.getBankAccount().withdraw(bettingAmount);

@@ -18,6 +18,8 @@ public class PayoutHandler {
         double mult;
         int finalAmount;
 
+        UserInterface.printSuccess("Player wins!\n");
+
         if (state.hasPlayerGotBlackjack()) {
             mult = RuleConstants.BLACKJACK_PAYOUT_MULTIPLIER;
         } else {

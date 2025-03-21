@@ -54,7 +54,9 @@ public class Game {
 
     private void doPlayerMoves() {
         while (state.isPlayerActive()) {
-            UserInterface.printHands(player, dealer);
+            if (currentMove != 1) {
+                UserInterface.printHands(player, dealer);
+            }
             currentMove++;
             if (RuleConstants.LIMIT_PLAYER_TURNS && (currentMove > RuleConstants.MAX_PLAYER_TURNS)) {
                 UserInterface.printError("Max player turns reached!\n");
@@ -91,16 +93,13 @@ public class Game {
 
     private void getAndConfirmResults() {
         if (player.getHandValue() > dealer.getHandValue() || state.dealerBusted()) {
-            UserInterface.printSuccess("Player wins!\n");
             payout.win();
         }
         else if (player.getHandValue() == dealer.getHandValue()) {
-            UserInterface.printGeneral("Hands are equal so there is a push!\n");
             payout.pushBet();
         }
         else {
-            UserInterface.printFail("Dealer wins!\n");
-            UserInterface.printFail(String.format("You lose $%d!\n", bet));
+            UserInterface.printFail(String.format("Dealer wins!\nYou lose $%d!\n", bet));
         }
     }
 

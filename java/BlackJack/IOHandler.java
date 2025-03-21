@@ -43,6 +43,7 @@ public class IOHandler {
             UserInterface.printGeneral(prompt + ": ");
             try {
                 inputtedInt = inp.nextInt();
+                flushStream();
                 return inputtedInt;
             } catch (InputMismatchException e) {
                 flushStream();
