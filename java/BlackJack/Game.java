@@ -86,7 +86,7 @@ public class Game {
             if (state.dealerWillStand()) {
                 UserInterface.printHands(player, dealer);
                 doDealerDelay();
-                UserInterface.printGeneral(String.format("Dealer stands on %d!\n", dealer.getHandValue()));
+                UserInterface.printGeneral("Dealer stands on %d!\n", dealer.getHandValue());
             }
         }
     }
@@ -99,12 +99,13 @@ public class Game {
             payout.pushBet();
         }
         else {
-            UserInterface.printFail(String.format("Dealer wins!\nYou lose $%d!\n", bet));
+            UserInterface.printFail("Dealer wins!\nYou lose $%d!\n", bet);
         }
     }
 
     private void setupGame() {
-        cards.addCardToHand(dealer.getHand());
+        //cards.addCardToHand(dealer.getHand());
+        dealer.getHand().addCard(new Card(CardRank.ACE, CardSuit.HEARTS));
 
         UserInterface.printGeneral("\n" + dealer.toString() + "\n");
 

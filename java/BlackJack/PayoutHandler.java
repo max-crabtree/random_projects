@@ -10,7 +10,7 @@ public class PayoutHandler {
     }
 
     public void pushBet() {
-        UserInterface.printGeneral(String.format("Hands are equal so there is a push! Your account has been deposited the initial bet of $%d\n", bet));
+        UserInterface.printGeneral("Hands are equal so there is a push! Your account has been deposited the initial bet of $%d\n", bet);
         player.getBankAccount().deposit(bet);
     }
 
@@ -28,7 +28,7 @@ public class PayoutHandler {
 
         finalAmount = (int)(bet * mult);
         player.getBankAccount().deposit(finalAmount);
-        UserInterface.printSuccess(String.format("Congratulations! Your account has been deposited $%d!\n", finalAmount));
+        UserInterface.printSuccess("Congratulations! Your account has been deposited $%d!\n", finalAmount);
     }
 
     public void insuranceBet() {

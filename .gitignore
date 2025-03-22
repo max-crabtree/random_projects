@@ -1,5 +1,5 @@
 # Other
-java/BlackJack/store/*.txt
+/java/BlackJack/store/
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/c,c++,java,python

@@ -16,7 +16,7 @@ public class RuleValidator {
 
         for (Rule rule : Rule.values()) {
             if (rule.getValue() == null) {
-                UserInterface.printError(String.format("%s value is NULL!", rule.name()));
+                UserInterface.printError("%s value is NULL!", rule.name());
                 return false;
             }
         }
@@ -45,7 +45,7 @@ public class RuleValidator {
             ruleValue = rule.getValue();
             if (ruleValue instanceof Integer && (int)ruleValue <= 0 ||
                 ruleValue instanceof Double  && (double)ruleValue <= 0) {
-                UserInterface.printError(String.format("%s cannot be <= 0!\n", rule.name()));
+                UserInterface.printError("%s cannot be <= 0!\n", rule.name());
                 return true;
             }
         }
@@ -57,7 +57,7 @@ public class RuleValidator {
         for (Rule rule : rules) {
             ruleValue = rule.getValue();
             if (ruleValue instanceof Double) {
-                UserInterface.printError(String.format("%s cannot be a Double!\n", rule.name()));
+                UserInterface.printError("%s cannot be a Double!\n", rule.name());
                 return true;
             }
         }

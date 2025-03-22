@@ -17,7 +17,7 @@ public class IOHandler {
                 default:
                     UserInterface.printGeneral("Possible moves are: ");
                     for (Move move : Move.values()) { 
-                        UserInterface.printGeneral(move + " "); 
+                        UserInterface.printGeneral(move.toString().toLowerCase() + " "); 
                     }
                     UserInterface.printGeneral("\n");
                     continue;
