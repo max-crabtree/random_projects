@@ -60,6 +60,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return String.format("Player %s", hand.toString());
+        return String.format("%s's %s", name, hand.toString());
     }
 }
