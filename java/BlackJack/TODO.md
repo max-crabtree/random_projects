@@ -12,4 +12,7 @@ Refactor some(?) classes to static if needed
 Make player BackAccount update in player.txt
 Expand into other card games? (Poker, etc...)
 Make each player have their own settings, rules, games, etc...
-Fix player wins too early (before dealer stands??)
+Support for multiple players
+Fix aces adjusting when they don't need to
+    Went from BlackJack to 11?
+    Dealer still stands too early due to ace I think

@@ -81,7 +81,7 @@ public class PlayerActionHandler {
         }
     }
 
-    public void insurance(boolean isActive) {
+    public void insurance() {
         UserInterface.printGeneral(String.format("You will wager another $%d for insurance...\n", bet / 2));
 
         try {

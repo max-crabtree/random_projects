@@ -32,7 +32,10 @@ public class Game {
     private void checkInsurance() {
         if (RuleConstants.CAN_USE_INSURANCE && dealer.getHandValue() == CardRank.ACE.getValue()) {
             boolean playingInsurance = IOHandler.getPlayerYesOrNo("Would you like to play insurance?");
-            playerAction.insurance(playingInsurance);
+            if (playingInsurance) {
+                playerAction.insurance();
+            }
+            return;
         }
     }
 
