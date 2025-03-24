@@ -1,19 +1,22 @@
-public class GameManager {
-    private GameFilesManager gameFiles;
+public class InitialiseGame {
+    FileHandler rulesFile;
+    FileHandler playersFile;
 
-    public GameManager(GameFilesManager gameFiles) { 
-        this.gameFiles = gameFiles;
+    public InitialiseGame(FileHandler rulesFile, FileHandler playersFile) {
+        this.rulesFile = rulesFile;
+        this.playersFile = playersFile;
     }
 
-    /* Move to seperate class */
+    /* Move to separate class */
     public void startMenu() {
         Player p;
+
         while (true) {
-            UserInterface.printMainMenu();
-            switch (IOHandler.getPlayerLowercaseString("")) { // change menu function possibly
-                case ("s"): RuleFileManager.viewSettings(); break;
-                case ("l"): p = gameFiles.loadPlayerFromFile(); startGameLoop(p); return;
-                case ("n"): p = createNewPlayer(); startGameLoop(p); return;
+            UserInterface.printStartMenu();
+            switch (IOHandler.getPlayerLowercaseString("")) {
+                case ("s"): rulesFile.toString(); continue;
+                case ("l"): p = loadPlayer(); startGameLoop(p); continue;
+                case ("n"): p = createNewPlayer(); startGameLoop(p); continue;
                 case ("q"): return;
                 default: continue;
             }
@@ -22,17 +25,23 @@ public class GameManager {
         
     }
 
+    private Player loadPlayer() {
+        String playerName = IOHandler.getPlayerLowercaseString("What player would you like to load?");
+        playerName = IOHandler.capitaliseString(playerName);
+        return new Player(playerName, (int)playersFile.getValueOf(playerName));
+    }
+
     private Player createNewPlayer() {
         String name = IOHandler.getPlayerLowercaseString("Enter your new player name here");
         name = IOHandler.capitaliseString(name);
         Player player = new Player(name, RuleConstants.STARTING_MONEY);
 
-        gameFiles.addPlayerToFile(player);
+        playersFile.addKeyValuePair(name, RuleConstants.STARTING_MONEY);
         
         return player;
     }
 
-    public void startGameLoop(Player player) {
+    private void startGameLoop(Player player) {
         boolean gameIsActive = true;
         int bettingAmount = 0;
         boolean canWithdraw = false;

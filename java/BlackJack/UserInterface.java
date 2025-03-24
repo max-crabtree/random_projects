@@ -27,7 +27,7 @@ public class UserInterface {
         System.out.print(player.toString() + "\n");
     }
 
-    public static void printMainMenu() {
+    public static void printStartMenu() {
         printCustom("s) view settings\n" + 
                     "l) load existing player\n" +
                     "n) create new player\n" +

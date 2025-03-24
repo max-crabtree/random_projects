@@ -9,8 +9,12 @@ public class Main {
         
         FileHandler rulesFile;
         FileHandler playersFile;
+        InitialiseGame init;
 
         rulesFile = new FileHandler(RULES_FILE_NAME);
         playersFile = new FileHandler(PLAYERS_FILE_NAME);
+        init = new InitialiseGame(rulesFile, playersFile);
+
+        init.startMenu();
     }
 }

@@ -104,12 +104,14 @@ public class FileHandler {
         }
     }
 
-    public void addKeyValuePair(String key, Object value) throws IOException {
-        FileWriter writer = new FileWriter(file, true);
-
-        writer.write(String.format("\n%s %c %s", key, DELIMITER, value.toString()));
-
-        writer.close();
+    public void addKeyValuePair(String key, Object value) {
+        try {
+            FileWriter writer = new FileWriter(file, true);
+            writer.write(String.format("\n%s %c %s", key, DELIMITER, value.toString()));
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //public void removeKeyValuePair(String key) {
