@@ -13,6 +13,11 @@ Make player BackAccount update in player.txt
 Expand into other card games? (Poker, etc...)
 Make each player have their own settings, rules, games, etc...
 Support for multiple players
+Fix weird issue where:
+        hands are not printed
+        says what move to make
+        dealer wins instantly
 Fix aces adjusting when they don't need to
     Went from BlackJack to 11?
     Dealer still stands too early due to ace I think
+Add warning for players with $0?

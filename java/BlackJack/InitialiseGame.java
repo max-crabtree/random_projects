@@ -71,7 +71,8 @@ public class InitialiseGame {
 
             Game game = new Game(player, bettingAmount, dealer, state, payout, cards, playerAction);
             game.start();
-            
+            playersFile.setValueOf(player.getName(), player.getBankBalance());
+
             canWithdraw = false;
             player.setTotalSplits(0);
         }
