@@ -132,6 +132,6 @@ public class FileHandler {
 
     @Override
     public String toString() {
-        return fileToString().toString();
+        return fileToString().toString() + "\n";
     }
 }

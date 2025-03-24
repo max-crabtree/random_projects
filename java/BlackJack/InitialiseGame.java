@@ -14,21 +14,20 @@ public class InitialiseGame {
         while (true) {
             UserInterface.printStartMenu();
             switch (IOHandler.getPlayerLowercaseString("")) {
-                case ("s"): rulesFile.toString(); continue;
+                case ("s"): UserInterface.printCustom(rulesFile.toString(), TerminalColour.BG_PURPLE); continue;
                 case ("l"): p = loadPlayer(); startGameLoop(p); continue;
                 case ("n"): p = createNewPlayer(); startGameLoop(p); continue;
                 case ("q"): return;
                 default: continue;
             }
-        }
-
-        
+        }  
     }
 
     private Player loadPlayer() {
-        String playerName = IOHandler.getPlayerLowercaseString("What player would you like to load?");
+        UserInterface.printCustom(playersFile.toString(), TerminalColour.BG_PURPLE);
+        String playerName = IOHandler.getPlayerLowercaseString("What player would you like to load? (type name)");
         playerName = IOHandler.capitaliseString(playerName);
-        return new Player(playerName, (int)playersFile.getValueOf(playerName));
+        return new Player(playerName, Integer.parseInt(playersFile.getValueOf(playerName).toString()));
     }
 
     private Player createNewPlayer() {
@@ -54,7 +53,7 @@ public class InitialiseGame {
             }
 
             while (!canWithdraw) {
-                bettingAmount = IOHandler.getPlayerInt(String.format("How much would you like to bet? (max: %d)\nMoney in the bank: $%d: ", RuleConstants.MAX_BET, player.getBankBalance()));
+                bettingAmount = IOHandler.getPlayerInt(String.format("How much would you like to bet? (max: $%d)\nMoney in the bank: $%d: ", RuleConstants.MAX_BET, player.getBankBalance()));
                 
                 try {
                     player.getBankAccount().withdraw(bettingAmount);
