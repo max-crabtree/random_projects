@@ -18,7 +18,10 @@ public enum Rule {
     MAX_PLAYER_TURNS(5),
     MAXIMUM_BET(500),
     STARTING_MONEY(1000),
-    MAX_NUMBER_OF_PLAYERS(50);
+    MAX_NUMBER_OF_PLAYERS(50),
+    RULES_FILE_NAME("rules.txt"),
+    PLAYERS_FILE_NAME("players.txt"),
+    GAMES_FILE_NAME("games@.txt");
     
     private Object defaultValue;
 
@@ -37,7 +40,7 @@ public enum Rule {
         } else if (isBoolean(value)) {
             return Boolean.parseBoolean(value);
         } else {
-            return null;
+            return value;
         }    
     }
 

@@ -9,7 +9,6 @@ Make RuleFileManager better, loadPlayerFromFile as well
 Merge together RuleFileManager and GameFilesManager probably...
 Change Deck type to Array / Stack, not linked list
 Refactor some(?) classes to static if needed
-Make player BackAccount update in player.txt
 Expand into other card games? (Poker, etc...)
 Make each player have their own settings, rules, games, etc...
 Support for multiple players
@@ -21,3 +20,6 @@ Fix aces adjusting when they don't need to
     Went from BlackJack to 11?
     Dealer still stands too early due to ace I think
 Add warning for players with $0?
+Add instructions to rules file
+Rules that are doubles should be able to be ints too
+When rules.txt is freshly made, getValueOf returns null in loadRules

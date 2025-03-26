@@ -6,18 +6,18 @@ import java.io.IOException;
 public class FileHandler {
     private static final String STORE_DIR = "store/";
     private static final String GAMES_DIR = "games/";
-    private static final char DELIMITER = ':';
+    protected static final char DELIMITER = ':';
 
-    private String filename;
-    private File file;
-    private StringBuilder fileString;
-    private StringBuilder[] tokenisedFileString;
+    protected String filename;
+    protected File file;
+    protected StringBuilder fileString;
+    protected StringBuilder[] tokenisedFileString;
     
     public FileHandler(String filename) throws IOException {
         this.filename = filename;
         this.file = createFile();
 
-        if (!file.exists()) {
+        if (!file.exists()) { // Do I need this?
             file.createNewFile();
         }
 
@@ -82,6 +82,17 @@ public class FileHandler {
 
     public Object getValueOf(String key) {
         for (int i = 0; i < tokenisedFileString.length; i++) {
+            if (tokenisedFileString[i].toString().equals(key)) {
+                return tokenisedFileString[i+1];
+            }
+        }
+        return null;
+    }
+
+    public Object getValueOf(String key, int start) {
+        if (start % 2 != 0) { return null; }
+        for (int i = start; i < tokenisedFileString.length; i++) {
+            if (tokenisedFileString[i].isEmpty()) { continue; }
             if (tokenisedFileString[i].toString().equals(key)) {
                 return tokenisedFileString[i+1];
             }

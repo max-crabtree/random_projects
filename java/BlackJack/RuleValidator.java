@@ -2,7 +2,7 @@ public class RuleValidator {
 
     public RuleValidator() {}
     
-    public boolean isValidRules() {
+    public static boolean isValidRules() {
         Rule[] cantBeZeroOrLessRules = { 
             Rule.BLACKJACK_VALUE, Rule.BLACKJACK_PAYOUT_MULTIPLIER, Rule.BLACKJACK_VALUE, 
             Rule.BLACKJACK_PAYOUT_MULTIPLIER, Rule.INSURANCE_PAYOUT_MULTIPLIER, Rule.DEALER_STAND_VALUE,
@@ -39,7 +39,7 @@ public class RuleValidator {
         return true;
     }
 
-    private boolean ruleIsZeroOrLess(Rule[] rules) {
+    private static boolean ruleIsZeroOrLess(Rule[] rules) {
         Object ruleValue;
         for (Rule rule : rules) {
             ruleValue = rule.getValue();
@@ -52,7 +52,7 @@ public class RuleValidator {
         return false;
     }
 
-    private boolean ruleIsDouble(Rule[] rules) {
+    private static boolean ruleIsDouble(Rule[] rules) {
         Object ruleValue;
         for (Rule rule : rules) {
             ruleValue = rule.getValue();

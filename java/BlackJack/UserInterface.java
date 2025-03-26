@@ -15,7 +15,7 @@ public class UserInterface {
     }
 
     public static void printError(String message, Object... formatArgs) {
-        System.out.print(TerminalColour.RED.apply("XX " + message + " XX"));
+        System.out.print(TerminalColour.RED.apply(String.format("XX " + message + " XX", formatArgs)));
     }
 
     public static void printCustom(String message, TerminalColour colour, Object... formatArgs) {
